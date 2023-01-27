@@ -32,6 +32,7 @@ namespace CargoManagementAPi
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CargoConnection")));
 
             services.AddScoped<IRepository<Cargo>,CargoRepository> ();
+            services.AddScoped<IRepository2<Customer>, CustomerRepository>();
 
             services.AddControllers();
 

@@ -57,9 +57,9 @@ namespace CargoManagementAPi.IRepository
             return null;
         }
 
-        public async Task<Cargo> Update(int cargoId, Cargo cargo)
+        public async Task<Cargo> Update(int id, Cargo cargo)
         {
-            var CargoInDb = await _context.Cargo.FindAsync(cargoId);
+            var CargoInDb = await _context.Cargo.FindAsync(id);
             if (CargoInDb != null)
             {
                 CargoInDb.CargoName = cargo.CargoName;

@@ -10,7 +10,7 @@ namespace CargoManagementAPi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class CargoesController : Controller
-
+    
     {
         private readonly IRepository<Cargo> _repository;
 
@@ -130,7 +130,7 @@ namespace CargoManagementAPi.Controllers
             {
                 return Ok();
             }
-            return NotFound($"Cargo could not found");
+            return NotFound("Cargo could not found");
 
         }
 
