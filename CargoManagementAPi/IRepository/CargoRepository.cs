@@ -63,7 +63,7 @@ namespace CargoManagementAPi.IRepository
             if (CargoInDb != null)
             {
                 CargoInDb.CargoName = cargo.CargoName;
-                CargoInDb.Price = cargo.Price;
+                CargoInDb.Weight= cargo.Weight;
                 CargoInDb.Place=cargo.Place;
                 CargoInDb.OrderDate = cargo.OrderDate;
                 _context.Cargo.Update(CargoInDb);

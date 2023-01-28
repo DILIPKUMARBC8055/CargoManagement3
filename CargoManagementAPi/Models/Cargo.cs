@@ -16,9 +16,8 @@ namespace CargoManagementAPi.Models
         [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
-        [Range(1, double.MaxValue)]
-        [DataType(DataType.Currency)]
-        public double Price { get; set; }
+        [Required]
+        public float Weight { get; set; }
 
         public CargoType CargoType { get; set; }
         public int CargoTypeId { get; set; }
