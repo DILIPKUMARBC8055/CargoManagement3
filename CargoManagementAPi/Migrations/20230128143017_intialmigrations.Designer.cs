@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CargoManagementAPi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230127090215_initial-migrations")]
-    partial class initialmigrations
+    [Migration("20230128143017_intialmigrations")]
+    partial class intialmigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,6 +55,9 @@ namespace CargoManagementAPi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CargoTypeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
@@ -66,6 +69,8 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("CargoId");
+
+                    b.HasIndex("CargoTypeId");
 
                     b.ToTable("Cargo");
                 });
@@ -86,6 +91,64 @@ namespace CargoManagementAPi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CargoOrderDetails");
+                });
+
+            modelBuilder.Entity("CargoManagementAPi.Models.CargoType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ExtraPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraWeight")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Weight")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CargoTypes");
+                });
+
+            modelBuilder.Entity("CargoManagementAPi.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CityName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Pincode")
+                        .HasMaxLength(6)
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("CargoManagementAPi.Models.Customer", b =>
@@ -134,8 +197,8 @@ namespace CargoManagementAPi.Migrations
                     b.Property<string>("EmpPhNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsApproved")
-                        .HasColumnType("bit");
+                    b.Property<int>("IsApproved")
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -144,6 +207,17 @@ namespace CargoManagementAPi.Migrations
                     b.HasKey("EmpId");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("CargoManagementAPi.Models.Cargo", b =>
+                {
+                    b.HasOne("CargoManagementAPi.Models.CargoType", "CargoType")
+                        .WithMany()
+                        .HasForeignKey("CargoTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CargoType");
                 });
 #pragma warning restore 612, 618
         }

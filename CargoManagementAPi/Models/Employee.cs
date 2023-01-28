@@ -22,7 +22,8 @@ namespace CargoManagementAPi.Models
         [DataType(DataType.Password)]
         [DefaultValue("Empl@123")]
         public string? Password { get; set; }
-        
-        public int IsApproved { get; set; }
+        [Required]
+        [DefaultValue(-1)]
+         public int IsApproved { get; set; }
     }
 }

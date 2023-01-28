@@ -19,8 +19,10 @@ namespace CargoManagementAPi.Models
         [Range(1, double.MaxValue)]
         [DataType(DataType.Currency)]
         public double Price { get; set; }
-        public IEnumerable<ValidationResult> Validate(
-            ValidationContext validationContext)
+
+        public CargoType CargoType { get; set; }
+        public int CargoTypeId { get; set; }
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             //today or future date is valid
             if (OrderDate <= DateTime.Today)

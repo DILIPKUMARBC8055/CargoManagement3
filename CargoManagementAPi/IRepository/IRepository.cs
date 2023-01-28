@@ -42,6 +42,17 @@ namespace CargoManagementAPi.IRepository
         Task<T> Delete(int id);
     }
 
+    //Cargo Type
+
+    public interface IRepository4<T> where T : class
+    {
+        Task<ActionResult<T>> GetById(int id);
+        Task<ActionResult<IEnumerable<T>>> GetAll();
+        Task<IActionResult> Create(T cargotype);
+        Task<T> Update(int id, T cargotype);
+        Task<T> Delete(int id);
+    }
+
 
 
 

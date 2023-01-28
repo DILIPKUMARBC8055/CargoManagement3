@@ -15,5 +15,9 @@ namespace CargoManagementAPi.Models
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Admin> Admin { get; set; }
+
+        public DbSet<CargoType> CargoTypes { get; set; }
+
+        public DbSet<City> Cities { get; set; }
     }
 }
