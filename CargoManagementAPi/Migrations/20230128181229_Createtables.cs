@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CargoManagementAPi.Migrations
 {
-    public partial class intialmigrations : Migration
+    public partial class Createtables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,17 +23,16 @@ namespace CargoManagementAPi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CargoOrderDetails",
+                name: "cargoStatuses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    StatusId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustId = table.Column<int>(type: "int", nullable: false),
-                    CargoId = table.Column<int>(type: "int", nullable: false)
+                    StatusName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CargoOrderDetails", x => x.Id);
+                    table.PrimaryKey("PK_cargoStatuses", x => x.StatusId);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +111,7 @@ namespace CargoManagementAPi.Migrations
                     Place = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     CargoTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -125,10 +125,64 @@ namespace CargoManagementAPi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CargoOrderDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReceiverName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CargoStatusStatusId = table.Column<int>(type: "int", nullable: true),
+                    CargoStatusId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustId = table.Column<int>(type: "int", nullable: false),
+                    CargoId = table.Column<int>(type: "int", nullable: false),
+                    CargoTypeId = table.Column<int>(type: "int", nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CargoOrderDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CargoOrderDetails_cargoStatuses_CargoStatusStatusId",
+                        column: x => x.CargoStatusStatusId,
+                        principalTable: "cargoStatuses",
+                        principalColumn: "StatusId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CargoOrderDetails_CargoTypes_CargoTypeId",
+                        column: x => x.CargoTypeId,
+                        principalTable: "CargoTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CargoOrderDetails_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Cargo_CargoTypeId",
                 table: "Cargo",
                 column: "CargoTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CargoOrderDetails_CargoStatusStatusId",
+                table: "CargoOrderDetails",
+                column: "CargoStatusStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CargoOrderDetails_CargoTypeId",
+                table: "CargoOrderDetails",
+                column: "CargoTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CargoOrderDetails_CityId",
+                table: "CargoOrderDetails",
+                column: "CityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -143,16 +197,19 @@ namespace CargoManagementAPi.Migrations
                 name: "CargoOrderDetails");
 
             migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
                 name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Employees");
 
             migrationBuilder.DropTable(
+                name: "cargoStatuses");
+
+            migrationBuilder.DropTable(
                 name: "CargoTypes");
+
+            migrationBuilder.DropTable(
+                name: "Cities");
         }
     }
 }
