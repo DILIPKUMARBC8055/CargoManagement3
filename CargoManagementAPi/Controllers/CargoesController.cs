@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace CargoManagementAPi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+        [Route("api/[controller]")]
+        [ApiController]
     public class CargoesController : Controller
     
     {
@@ -100,7 +100,7 @@ namespace CargoManagementAPi.Controllers
             if (result != null)
             {
                 return NoContent();
-            }
+            }   
             return NotFound("Cargo Not Found");
 
         

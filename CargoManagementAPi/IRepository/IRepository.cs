@@ -20,7 +20,7 @@ namespace CargoManagementAPi.IRepository
 
 
     }
-
+    //Customers
     public interface IRepository2<T> where T : class
     {
         Task<ActionResult<T>> GetById(int id);
@@ -30,6 +30,20 @@ namespace CargoManagementAPi.IRepository
         Task<T> Delete(int id);
 
     }
+
+    //Admin
+
+    public interface IRepository3<T> where T : class
+    {
+        Task<ActionResult<T>> GetById(int id);
+        Task<ActionResult<IEnumerable<T>>> GetAll();
+        Task<IActionResult> Create(T customer);
+        Task<T> Update(int id, T admin);
+        Task<T> Delete(int id);
+    }
+
+
+
 
 
 

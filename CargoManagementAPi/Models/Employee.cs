@@ -23,6 +23,6 @@ namespace CargoManagementAPi.Models
         [DefaultValue("Empl@123")]
         public string? Password { get; set; }
         
-        public bool? IsApproved { get; set; }
+        public int IsApproved { get; set; }
     }
 }
