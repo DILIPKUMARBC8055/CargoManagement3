@@ -14,6 +14,7 @@ namespace CargoManagementAPi.Models
         public DateTime OrderDate { get; set; }
 
         [Required]
+
         public string OrderId { get; set; }
         [Required]
         public string ReceiverName { get; set; }
