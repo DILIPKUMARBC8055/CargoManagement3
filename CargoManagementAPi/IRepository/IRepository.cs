@@ -53,6 +53,17 @@ namespace CargoManagementAPi.IRepository
         Task<T> Delete(int id);
     }
 
+    //Employee Interface
+
+    public interface IRepositoryEmployee<T> where T : class
+    {
+        Task<ActionResult<T>> GetById(int id);
+        Task<ActionResult<IEnumerable<T>>> GetAll();
+        Task<IActionResult> Create(T customer);
+        Task<T> Update(int id, T admin);
+        Task<T> Delete(int id);
+    }
+
 
 
 

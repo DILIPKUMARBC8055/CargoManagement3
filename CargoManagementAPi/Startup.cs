@@ -34,6 +34,7 @@ namespace CargoManagementAPi
             services.AddScoped<IRepository<Cargo>,CargoRepository> ();
             services.AddScoped<IRepository2<Customer>, CustomerRepository>();
             services.AddScoped<IRepository3<Admin>,AdminRepository>();
+            services.AddScoped<IRepositoryEmployee<Employee>, EmployeeRepository>();
 
             services.AddControllers();
 
