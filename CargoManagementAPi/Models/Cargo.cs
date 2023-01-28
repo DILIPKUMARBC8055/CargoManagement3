@@ -22,6 +22,8 @@ namespace CargoManagementAPi.Models
 
         public CargoType CargoType { get; set; }
         public int CargoTypeId { get; set; }
+
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             //today or future date is valid

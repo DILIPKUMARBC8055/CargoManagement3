@@ -26,7 +26,7 @@ namespace CargoManagementAPi.Controllers
 
         [HttpGet]
         [Route("GetCargoTypeById/{id}",Name = "GetCargoTypeById")]
-        public async Task<ActionResult<CargoType>> GetById(int id)
+        public async Task<ActionResult<CargoType>> CityById(int id)
         {
             var cargotype=await _repository4.GetById(id);
             if(cargotype != null)

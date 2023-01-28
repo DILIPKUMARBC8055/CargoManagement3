@@ -52,6 +52,18 @@ namespace CargoManagementAPi.IRepository
         Task<T> Update(int id, T cargotype);
         Task<T> Delete(int id);
     }
+    //City
+    public interface IRepository5<T> where T : class
+    {
+        Task<ActionResult<T>> CityById(int id);
+        Task<ActionResult<IEnumerable<T>>> GetAllCities();
+        Task<IActionResult> Create(T cargotype);
+        Task<T> Update(int id, T cargotype);
+        Task<T> Delete(int id);
+    }
+
+
+
 
     //Employee Interface
 
