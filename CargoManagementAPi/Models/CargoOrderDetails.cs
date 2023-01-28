@@ -9,13 +9,13 @@ namespace CargoManagementAPi.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(50)]
+        
         [DataType(DataType.DateTime)]
         public DateTime OrderDate { get; set; }
 
         [Required]
-        public string OrderId { get; set; }  
-
+        public string OrderId { get; set; }
+        [Required]
         public string ReceiverName { get; set; }
 
         [ForeignKey("Customer")]
