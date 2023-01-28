@@ -18,6 +18,9 @@ namespace CargoManagementAPi.Models
         [Required]
         public string ReceiverName { get; set; }
 
+        public CargoStatus CargoStatus { get; set; }
+        public string CargoStatusId { get; set; }
+
         [ForeignKey("Customer")]
 
         public int CustId { get; set; }
@@ -32,6 +35,8 @@ namespace CargoManagementAPi.Models
         public City City { get; set; }
 
         public int CityId { get; set; }
+
+
 
        
 
