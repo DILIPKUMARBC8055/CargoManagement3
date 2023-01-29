@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CargoManagementAPi.Migrations
 {
-    public partial class Createtables : Migration
+    public partial class intialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

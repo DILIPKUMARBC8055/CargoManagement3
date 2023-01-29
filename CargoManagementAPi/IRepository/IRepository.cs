@@ -66,7 +66,7 @@ namespace CargoManagementAPi.IRepository
 
 
     //Employee Interface
-
+    
     public interface IRepositoryEmployee<T> where T : class
     {
         Task<ActionResult<T>> GetById(int id);
@@ -75,6 +75,7 @@ namespace CargoManagementAPi.IRepository
         Task<T> Update(int id, T admin);
         Task<T> Delete(int id);
     }
+    //Order details
 
     public interface IRepositoryCODR<T> where T : class
     {

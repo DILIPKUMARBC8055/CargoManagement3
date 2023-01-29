@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CargoManagementAPi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230128181229_Createtables")]
-    partial class Createtables
+    [Migration("20230129090958_addedUsernamecolumn")]
+    partial class addedUsernamecolumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,6 +102,9 @@ namespace CargoManagementAPi.Migrations
 
                     b.Property<int>("CustId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -222,6 +225,10 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustPhNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustId");

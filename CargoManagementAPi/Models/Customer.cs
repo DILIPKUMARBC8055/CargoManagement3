@@ -3,10 +3,12 @@ using System.ComponentModel;
 
 namespace CargoManagementAPi.Models
 {
-    public class Customer
+    public class Customer:CustomerLoginModel
     {
         [Key]
         public int CustId { get; set; }
+        [Required]
+        public string UserName { get; set; }
 
         public string? CustName { get; set; }
 
@@ -21,5 +23,18 @@ namespace CargoManagementAPi.Models
         [DataType(DataType.Password)]
         [DefaultValue("Cust@123")]
         public string CustPassword { get; set; }
+    }
+
+    public class CustomerLoginModel
+    {
+        [Required]
+        public string UserName { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Password)]
+        [DefaultValue("Cust@123")]
+        public string CustPassword { get; set; }
+
     }
 }

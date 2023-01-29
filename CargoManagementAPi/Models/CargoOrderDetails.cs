@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System;
+using System.ComponentModel;
 
 namespace CargoManagementAPi.Models
 {
@@ -18,7 +19,9 @@ namespace CargoManagementAPi.Models
         public string OrderId { get; set; }
         [Required]
         public string ReceiverName { get; set; }
-
+        [Required]
+        [DefaultValue(false)]
+        public bool IsAccepted { get; set; }
         public CargoStatus CargoStatus { get; set; }
         public string CargoStatusId { get; set; }
 

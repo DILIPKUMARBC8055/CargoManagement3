@@ -3,10 +3,12 @@ using System.ComponentModel;
 
 namespace CargoManagementAPi.Models
 {
-    public class Employee
+    public class Employee:EmployeeLoginModel
     {
         [Key]
         public int EmpId { get; set; }
+        [Required]
+        public string UserName { get; set; }
 
         public string? EmpName { get; set; }
         
@@ -25,5 +27,15 @@ namespace CargoManagementAPi.Models
         [Required]
         [DefaultValue(-1)]
          public int IsApproved { get; set; }
+    }
+
+    public class EmployeeLoginModel
+    {
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [DefaultValue("Empl@123")]
+        public string? Password { get; set; }
     }
 }
