@@ -18,6 +18,7 @@ namespace CargoManagementAPi.Models
 
         public DbSet<CargoType> CargoTypes { get; set; }
 
+
         public DbSet<City> Cities { get; set; }
 
         public DbSet<CargoStatus> cargoStatuses { get; set; }

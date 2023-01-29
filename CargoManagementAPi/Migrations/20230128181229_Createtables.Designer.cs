@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CargoManagementAPi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230128143017_intialmigrations")]
-    partial class intialmigrations
+    [Migration("20230128181229_Createtables")]
+    partial class Createtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,6 +68,9 @@ namespace CargoManagementAPi.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
+
                     b.HasKey("CargoId");
 
                     b.HasIndex("CargoTypeId");
@@ -85,12 +88,58 @@ namespace CargoManagementAPi.Migrations
                     b.Property<int>("CargoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CargoStatusId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CargoStatusStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CargoTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CustId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("CargoStatusStatusId");
+
+                    b.HasIndex("CargoTypeId");
+
+                    b.HasIndex("CityId");
+
                     b.ToTable("CargoOrderDetails");
+                });
+
+            modelBuilder.Entity("CargoManagementAPi.Models.CargoStatus", b =>
+                {
+                    b.Property<int>("StatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("StatusName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("StatusId");
+
+                    b.ToTable("cargoStatuses");
                 });
 
             modelBuilder.Entity("CargoManagementAPi.Models.CargoType", b =>
@@ -218,6 +267,31 @@ namespace CargoManagementAPi.Migrations
                         .IsRequired();
 
                     b.Navigation("CargoType");
+                });
+
+            modelBuilder.Entity("CargoManagementAPi.Models.CargoOrderDetails", b =>
+                {
+                    b.HasOne("CargoManagementAPi.Models.CargoStatus", "CargoStatus")
+                        .WithMany()
+                        .HasForeignKey("CargoStatusStatusId");
+
+                    b.HasOne("CargoManagementAPi.Models.CargoType", "CargoType")
+                        .WithMany()
+                        .HasForeignKey("CargoTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CargoManagementAPi.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CargoStatus");
+
+                    b.Navigation("CargoType");
+
+                    b.Navigation("City");
                 });
 #pragma warning restore 612, 618
         }
