@@ -12,10 +12,11 @@ namespace CargoManagementAPi.Controllers
     {
 
         private readonly IRepository5<City> _repository5;
+       
         public CitiesController(IRepository5<City> repository5)
         {
             _repository5 = repository5;
-
+         
         }
 
         [HttpGet]

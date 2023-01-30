@@ -40,7 +40,7 @@ namespace CargoManagementAPi.IRepository
         public async Task<ActionResult<IEnumerable<Employee>>> GetAll()
         {
 
-            return await _context.Employees.ToListAsync<Employee>();
+            return await _context.Employees.ToListAsync();
 
         }
 

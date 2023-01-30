@@ -80,7 +80,7 @@ namespace CargoManagementAPi.Controllers
         }
 
 
-        [HttpDelete("DeleteCustomer")]
+        [HttpDelete("DeleteCustomer/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var result=await _repository2.Delete(id);
@@ -96,6 +96,7 @@ namespace CargoManagementAPi.Controllers
 
         [HttpPost]
         [Route("Login")]
+
         public ActionResult Login([FromBody] CustomerLoginModel customerLoginModel)
         {
             var currentCustomer=_context.Customers.FirstOrDefault(x=>x.UserName==customerLoginModel.UserName && x.CustPassword==customerLoginModel.CustPassword);
@@ -111,6 +112,7 @@ namespace CargoManagementAPi.Controllers
             }
             return Ok(token);
         }
+
         [NonAction]
         public string GenerateToken(Customer customer)
         {

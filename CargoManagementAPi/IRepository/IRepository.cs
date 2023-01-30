@@ -57,8 +57,8 @@ namespace CargoManagementAPi.IRepository
     {
         Task<ActionResult<T>> CityById(int id);
         Task<ActionResult<IEnumerable<T>>> GetAllCities();
-        Task<IActionResult> Create(T cargotype);
-        Task<T> Update(int id, T cargotype);
+        Task<IActionResult> Create(T city);
+        Task<T> Update(int id, T city);
         Task<T> Delete(int id);
     }
 
@@ -84,6 +84,16 @@ namespace CargoManagementAPi.IRepository
         Task<IActionResult> Create(T customer);
         Task<T> Update(int id, T admin);
         Task<T> Delete(int id);
+    }
+
+    public interface IRepositoryCargoStatus<T> where T : class
+    {
+        Task<ActionResult<T>> GetById(int id);
+        Task<ActionResult<IEnumerable<T>>> GetAll();
+        Task<IActionResult> Create(T customer);
+        Task<T> Update(int id, T admin);
+        Task<T> Delete(int id);
+
     }
 
 
