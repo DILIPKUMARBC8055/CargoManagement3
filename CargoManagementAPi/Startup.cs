@@ -43,18 +43,19 @@ namespace CargoManagementAPi
                 ValidAudience = Configuration["JWT"],
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:SecretKey"]))
 
-            }) ;
+            });
 
             services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CargoConnection")));
 
-            services.AddScoped<IRepository<Cargo>,CargoRepository> ();
+            services.AddScoped<IRepository<Cargo>, CargoRepository>();
             services.AddScoped<IRepository2<Customer>, CustomerRepository>();
-            services.AddScoped<IRepository3<Admin>,AdminRepository>();
+            services.AddScoped<IRepository3<Admin>, AdminRepository>();
             services.AddScoped<IRepositoryEmployee<Employee>, EmployeeRepository>();
             services.AddScoped<IRepositoryCODR<CargoOrderDetails>, CargoOrderDetailsRepository>();
             services.AddScoped<IRepository5<City>, CityRepository>();
             services.AddScoped<IRepository4<CargoType>, CargoTypeRepository>();
-            
+            services.AddScoped<IRepositoryCargoStatus<CargoStatus>, CargoStatusRepository>();
+
 
 
             services.AddControllers();

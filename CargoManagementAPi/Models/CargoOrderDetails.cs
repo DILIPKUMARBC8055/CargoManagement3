@@ -20,6 +20,9 @@ namespace CargoManagementAPi.Models
         public string OrderId { get; set; }
         [Required]
         public string ReceiverName { get; set; }
+
+        public string ReceiverEmail { get; set; }
+        public string ReceiverPhoneNo { get; set; }
         [Required]
         [DefaultValue(false)]
         public bool IsAccepted { get; set; }

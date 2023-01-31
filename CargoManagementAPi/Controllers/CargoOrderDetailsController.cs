@@ -64,7 +64,7 @@ namespace CargoManagementAPi.Controllers
             return NotFound("Cargo Order Detail Not Found");
         }
 
-        [HttpDelete("DeleteCargoOrderDetail")]
+        [HttpDelete("DeleteCargoOrderDetail/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var result = await _repository2.Delete(id);
