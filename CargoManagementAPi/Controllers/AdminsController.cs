@@ -16,6 +16,7 @@ namespace CargoManagementAPi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class AdminsController : Controller
     {
         private readonly IRepository2<Customer> _repository2;
@@ -42,6 +43,7 @@ namespace CargoManagementAPi.Controllers
             return await _repository3.GetAll();
 
         }
+
         [HttpGet]
         [Route("GetAdminById/{id}", Name = "GetAdminById")]
         public async Task<ActionResult<Admin>> GetById(int id)

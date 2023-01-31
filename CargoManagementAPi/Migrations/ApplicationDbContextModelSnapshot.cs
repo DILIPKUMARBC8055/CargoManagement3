@@ -87,9 +87,6 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CargoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CargoStatusId")
                         .HasColumnType("nvarchar(max)");
 
@@ -115,9 +112,15 @@ namespace CargoManagementAPi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.Property<string>("ReceiverName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -197,7 +200,7 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Pincode")
-                        .HasMaxLength(6)
+                        .HasMaxLength(7)
                         .HasColumnType("int");
 
                     b.HasKey("Id");

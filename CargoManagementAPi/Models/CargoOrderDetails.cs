@@ -12,6 +12,7 @@ namespace CargoManagementAPi.Models
         [Required]
         
         [DataType(DataType.DateTime)]
+        
         public DateTime OrderDate { get; set; }
 
         [Required]
@@ -26,11 +27,10 @@ namespace CargoManagementAPi.Models
         public string CargoStatusId { get; set; }
 
         [ForeignKey("Customer")]
-
         public int CustId { get; set; }
 
-        [ForeignKey("Cargo")]
-        public int CargoId { get; set; }
+        //[ForeignKey("Cargo")]
+        //public int CargoId { get; set; }
 
         public CargoType CargoType { get; set; }
 
@@ -40,9 +40,13 @@ namespace CargoManagementAPi.Models
 
         public int CityId { get; set; }
 
+        public double Weight { get; set; }
+
+        public double Price { get; set; }
 
 
-       
+
+
 
 
     }

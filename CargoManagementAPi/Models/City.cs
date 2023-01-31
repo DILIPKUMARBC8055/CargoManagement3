@@ -10,7 +10,7 @@ namespace CargoManagementAPi.Models
         [StringLength(50)]
         public string CityName { get; set; }
         [Required]
-        [MaxLength(6)]
+        [MaxLength(7)]
         public int Pincode { get; set; }
         [Required]
         [StringLength(50)]
@@ -19,4 +19,5 @@ namespace CargoManagementAPi.Models
         
 
     }
+
 }

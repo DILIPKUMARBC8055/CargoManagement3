@@ -63,7 +63,7 @@ namespace CargoManagementAPi.IRepository
                 cargoOrderDetailsInDb.CargoStatus = cargoOrderDetails.CargoStatus;
                 cargoOrderDetailsInDb.CargoStatusId = cargoOrderDetails.CargoStatusId;
                 cargoOrderDetailsInDb.CustId = cargoOrderDetails.CustId;
-                cargoOrderDetailsInDb.CargoId = cargoOrderDetails.CargoId;
+              
                 cargoOrderDetailsInDb.CargoType = cargoOrderDetails.CargoType;
                 cargoOrderDetailsInDb.CargoTypeId = cargoOrderDetails.CargoTypeId;
                 cargoOrderDetailsInDb.City = cargoOrderDetails.City;

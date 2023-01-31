@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CargoManagementAPi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230129090958_addedUsernamecolumn")]
-    partial class addedUsernamecolumn
+    [Migration("20230131093359_intial")]
+    partial class intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,10 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -85,9 +89,6 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CargoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CargoStatusId")
                         .HasColumnType("nvarchar(max)");
 
@@ -113,9 +114,15 @@ namespace CargoManagementAPi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.Property<string>("ReceiverName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -195,7 +202,7 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Pincode")
-                        .HasMaxLength(6)
+                        .HasMaxLength(7)
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -257,6 +264,10 @@ namespace CargoManagementAPi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

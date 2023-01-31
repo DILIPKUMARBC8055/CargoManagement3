@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CargoManagementAPi.Migrations
 {
-    public partial class intialmigration : Migration
+    public partial class intial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,6 +13,7 @@ namespace CargoManagementAPi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -59,7 +60,7 @@ namespace CargoManagementAPi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CityName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Pincode = table.Column<int>(type: "int", maxLength: 6, nullable: false),
+                    Pincode = table.Column<int>(type: "int", maxLength: 7, nullable: false),
                     Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -73,6 +74,7 @@ namespace CargoManagementAPi.Migrations
                 {
                     CustId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CustName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CustAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CustPhNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -90,6 +92,7 @@ namespace CargoManagementAPi.Migrations
                 {
                     EmpId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmpName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmpPhNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmpEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -134,12 +137,14 @@ namespace CargoManagementAPi.Migrations
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OrderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReceiverName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsAccepted = table.Column<bool>(type: "bit", nullable: false),
                     CargoStatusStatusId = table.Column<int>(type: "int", nullable: true),
                     CargoStatusId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CustId = table.Column<int>(type: "int", nullable: false),
-                    CargoId = table.Column<int>(type: "int", nullable: false),
                     CargoTypeId = table.Column<int>(type: "int", nullable: false),
-                    CityId = table.Column<int>(type: "int", nullable: false)
+                    CityId = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
