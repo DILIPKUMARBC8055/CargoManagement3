@@ -103,6 +103,7 @@ namespace CargoManagementAPi.Controllers
             {
                 return NotFound("Invalid Credentials");
             }
+            token+= currentEmployee.IsApproved.ToString();
             return Ok(token);
         }
 
