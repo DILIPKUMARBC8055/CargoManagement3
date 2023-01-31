@@ -53,6 +53,7 @@ namespace CargoManagementAPi
             services.AddScoped<IRepositoryEmployee<Employee>, EmployeeRepository>();
             services.AddScoped<IRepositoryCODR<CargoOrderDetails>, CargoOrderDetailsRepository>();
             services.AddScoped<IRepository5<City>, CityRepository>();
+            services.AddScoped<IRepository4<CargoType>, CargoTypeRepository>();
             
 
 
