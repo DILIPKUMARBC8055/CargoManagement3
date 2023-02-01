@@ -28,6 +28,7 @@ namespace CargoManagementAPi.IRepository
         Task<IActionResult> Create(T customer);
         Task<T> Update(int Custid,T customer);
         Task<T> Delete(int id);
+        Task<ActionResult<IEnumerable<T>>> SearchByName(string name);
 
     }
 

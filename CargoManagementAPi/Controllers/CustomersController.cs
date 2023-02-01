@@ -10,8 +10,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,12 +27,14 @@ namespace CargoManagementAPi.Controllers
         private readonly IConfiguration _configuration;
         private readonly IRepository2<Customer> _repository2;
         private readonly ApplicationDbContext _context;
+
         public CustomersController(IRepository2<Customer> repository2,IConfiguration configuration, ApplicationDbContext context)
         {
             _repository2 = repository2;
             _configuration = configuration;
             _context = context;
         }
+
         [HttpGet]
         [Route("GetAllCustomers")]
         public async Task<ActionResult<IEnumerable<Customer>>> GetAll()
@@ -48,6 +52,20 @@ namespace CargoManagementAPi.Controllers
                 return Ok(customer);
             }
             return NotFound();
+        }
+
+        [HttpGet]
+        [Route("SearchByName/{Name}")]
+        public async Task<ActionResult<IEnumerable<Customer>>> SearchByName(string Name)
+        {
+            if (Name == null)
+            {
+                var a= await _repository2.GetAll();
+                return a;
+            }
+
+            return await _repository2.SearchByName(Name);
+
         }
 
         [HttpPost]
