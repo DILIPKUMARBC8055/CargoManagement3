@@ -27,7 +27,7 @@ namespace CargoManagementAPi.Models
         [DefaultValue(false)]
         public bool IsAccepted { get; set; }
         public CargoStatus CargoStatus { get; set; }
-        public string CargoStatusId { get; set; }
+        public int CargoStatusId { get; set; }
 
         [ForeignKey("Customer")]
         public int CustId { get; set; }
